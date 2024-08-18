@@ -12,6 +12,9 @@ import { CreateCategoryController } from "./controllers/category/CreateCategoryC
 import { ListCategoryController } from "./controllers/category/ListCategoryController";
 
 import { CreateProductController } from "./controllers/product/CreateProductController";
+import { ListByCategoryController } from "./controllers/product/ListByCategoryController";
+
+import { CreateOrderController } from "./controllers/order/CreateOrderController";
 
 const router = Router()
 
@@ -28,5 +31,9 @@ router.get('/category', isAuthenticated, new ListCategoryController().handle)
 
 // PRODUCTS ROUTES
 router.post('/product', isAuthenticated, upload.single('file'), new CreateProductController().handle)
+router.get('/category/product', isAuthenticated, new ListByCategoryController().handle)
+
+// ORDER ROUTES
+router.post('/order', isAuthenticated, new CreateOrderController().handle)
 
 export { router };

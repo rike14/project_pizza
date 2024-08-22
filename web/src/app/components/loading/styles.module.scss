@@ -1,0 +1,33 @@
+.skeletonContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    position: fixed;
+    top: 40%;
+}
+
+.skeleton {
+    border-radius: 0.25rem;
+    animation: skeleton-loading 2s linear infinite alternate;
+    width: 190px;
+    height: 50px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+@keyframes skeleton-loading {
+    0% {
+        background-color: var(--white);
+        color: #000;
+    }
+    
+    100% {
+        background-color: var(--green-900);
+        color: var(--red-900);
+    }
+}

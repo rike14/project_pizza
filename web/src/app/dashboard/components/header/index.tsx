@@ -6,6 +6,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { Suspense, useState } from 'react'
+import { toast } from 'sonner'
 import styles from './styles.module.scss'
 import logoImg from '/public/logo.svg'
 
@@ -17,7 +18,7 @@ export function Header(){
         useLoading(true)
 
         deleteCookie("session", { path: "/"})
-
+        toast.success("Logout successfully!")
         router.replace("/")
     }
 

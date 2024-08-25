@@ -17,6 +17,7 @@
     margin-bottom: 16px;
     margin-top: 24px;
     gap: 14px;
+    width: 90%;
     
     button {
         background-color: transparent;
@@ -60,6 +61,7 @@
     border-radius: 8px;
     color: var(--white);
     transition: all 0.5s;
+    width: 90%;
 
     &:hover {
         filter: brightness(1.2);

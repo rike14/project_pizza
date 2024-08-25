@@ -53,10 +53,11 @@ $size: 30px;
 }
 
 .loader {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    position: absolute;
+    top: calc(50% - #{$size / 2});
+    left: calc(43% - #{$size / 2});
+    width: $size;
+    height: $size;
 }
 
 .flipping {

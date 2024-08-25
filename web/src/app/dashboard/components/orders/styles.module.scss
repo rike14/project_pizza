@@ -26,10 +26,23 @@
 
 
         &:hover{
-            transform: rotate(240deg);
-            color: var(--red-900);
+            transform: scale(1.2) 
         }
+
     }
+
+}
+
+.buttonPressed {
+    transition: all 2s;
+    transform: rotate(180deg);
+    color: var(--red-900);
+}
+
+.buttonNotPressed {
+    transition: all 2s;
+    transform: rotate(-180deg);
+    color: var(--green-900);
 }
 
 .listOrders {
@@ -50,6 +63,7 @@
 
     &:hover {
         filter: brightness(1.2);
+        transform: scale(1.05);
     }
 }
 

@@ -32,6 +32,10 @@
 .dialogBack {
     background-color: transparent;
     border: 0;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
 }
 
 .table {
@@ -58,4 +62,17 @@
     border-radius: 8px;
     border: 0;
     font-weight: bold;
+    transition: all 0.5s;
+
+    &:hover {
+        transform: scale(1.1);
+    }
+}
+
+.name {
+    margin-left: 16px;
+}
+
+.totalOrder {
+    margin: 8px 0 16px 0;
 }

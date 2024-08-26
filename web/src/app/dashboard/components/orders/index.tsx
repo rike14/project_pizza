@@ -1,7 +1,10 @@
 "use client"
 import { OrderProps } from '@/lib/order.type';
+import { OrderContext } from '@/providers/order';
 import { RefreshCcw } from 'lucide-react';
-import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { use, useState } from 'react';
+import { toast } from 'sonner';
 import { ModalOrder } from '../modal';
 import styles from './styles.module.scss';
 
@@ -11,11 +14,26 @@ interface Props {
 }
 
 export default function Orders({ orders }: Props){
+    const router = useRouter()
+    const {isOpen, onRequestOpen} = use(OrderContext)
     const [buttonPressed, setButtonPressed] = useState(false)
-    const handleButtonPressed = () => {
+
+    function handleRefreshOrders() {
        setButtonPressed(true)
-       setTimeout(() => setButtonPressed(false), 2500)
+       setTimeout(() => {
+            setButtonPressed(false)
+        }, 1500)
+
+       setTimeout(() => {
+            router.refresh()
+            toast.success("Orders updated!")
+        }, 3000)
+       
     };
+
+    async function handleDetailOrder(order_id: string) {
+       await onRequestOpen(order_id)
+    }
 
     return(
         <>
@@ -23,7 +41,7 @@ export default function Orders({ orders }: Props){
                 <section className={styles.containerSection}>
                     <h1>Orders</h1>
                     <button
-                        onClick={handleButtonPressed}
+                        onClick={handleRefreshOrders}
                     >
                         <RefreshCcw size={24} className={buttonPressed ? styles.buttonPressed : styles.buttonNotPressed}/>
                     </button>
@@ -32,25 +50,25 @@ export default function Orders({ orders }: Props){
                 <section className={styles.listOrders}>
                     {orders.length > 0 ? orders.map( order => (
                         <button
-                        key={order.id} 
-                        className={styles.orderItem}
+                            key={order.id} 
+                            className={styles.orderItem}
+                            onClick={() => handleDetailOrder(order.id)}
                         >
                             <div className={styles.tag}></div>
                             <span>Table {order.table}</span>
                         </button>
                     )) :
                     <span
-                    className={styles.orderItem}
+                        className={styles.orderItem}
                     >
-                                <div className={styles.tag}></div>
-                                <span>No open tables</span>
-                        </span>
+                        <div className={styles.tag}></div>
+                        <span>No open orders...</span>
+                    </span>
                     }  
                 </section>
             </main>
-            <ModalOrder 
-                
-            />
+
+            {isOpen && <ModalOrder />}
         </>
     )
 }

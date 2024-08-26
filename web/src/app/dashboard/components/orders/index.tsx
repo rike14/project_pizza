@@ -7,6 +7,7 @@ import { use, useState } from 'react';
 import { toast } from 'sonner';
 import { ModalOrder } from '../modal';
 import styles from './styles.module.scss';
+import Loading from '@/app/components/loading/loading';
 
 
 interface Props {
@@ -20,11 +21,9 @@ export default function Orders({ orders }: Props){
 
     function handleRefreshOrders() {
        setButtonPressed(true)
-       setTimeout(() => {
-            setButtonPressed(false)
-        }, 1500)
 
-       setTimeout(() => {
+        setTimeout(() => {
+           setButtonPressed(false)
             router.refresh()
             toast.success("Orders updated!")
         }, 3000)
@@ -46,26 +45,29 @@ export default function Orders({ orders }: Props){
                         <RefreshCcw size={24} className={buttonPressed ? styles.buttonPressed : styles.buttonNotPressed}/>
                     </button>
                 </section>
-
-                <section className={styles.listOrders}>
-                    {orders.length > 0 ? orders.map( order => (
-                        <button
-                            key={order.id} 
+                {buttonPressed ? 
+                    <Loading /> :
+                
+                    <section className={styles.listOrders}>
+                        {orders.length > 0 ? orders.map( order => (
+                            <button
+                                key={order.id} 
+                                className={styles.orderItem}
+                                onClick={() => handleDetailOrder(order.id)}
+                            >
+                                <div className={styles.tag}></div>
+                                <span>Table {order.table}</span>
+                            </button>
+                        )) :
+                        <span
                             className={styles.orderItem}
-                            onClick={() => handleDetailOrder(order.id)}
                         >
                             <div className={styles.tag}></div>
-                            <span>Table {order.table}</span>
-                        </button>
-                    )) :
-                    <span
-                        className={styles.orderItem}
-                    >
-                        <div className={styles.tag}></div>
-                        <span>No open orders...</span>
-                    </span>
-                    }  
-                </section>
+                            <span>No open orders...</span>
+                        </span>
+                        }  
+                    </section>
+                }
             </main>
 
             {isOpen && <ModalOrder />}

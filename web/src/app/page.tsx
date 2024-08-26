@@ -22,29 +22,30 @@ export default function Home(){
       }
 
       try {
-          const response = await api.post("/session", {
-              email,
-              password
-          })
+        const response = await api.post("/session", {
+            email,
+            password
+        })
 
-          if(!response.data.token){
-            return;
-          }
+        if(!response.data.token){
+          return;
+        }
 
-          const expressTime = 60 * 60 * 24 * 30 * 1000 // 30 days
-          cookies().set("session", response.data.token), {
-            maxAge: expressTime,
-            path: '/',
-            httpOnly: false,
-            secure: process.env.NODE_ENV === "production"
-          }
+        const expressTime = 60 * 60 * 24 * 30 * 1000 // 30 days
+        cookies().set("session", response.data.token), {
+          maxAge: expressTime,
+          path: '/',
+          httpOnly: false,
+          secure: process.env.NODE_ENV === "production"
+        }
 
       } catch (error) {
-          console.log(error)
-          return;
+        console.log(error)
+        return;
       }
-
+      
       redirect("/dashboard")
+
   }
 
   return(

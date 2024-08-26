@@ -1,0 +1,94 @@
+.container {
+    max-width: 720px;
+    margin: 20px auto;
+    padding: 0 16px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+
+    h1 {
+        color: var(--white)
+    }
+}
+
+.containerSection {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+    margin-top: 24px;
+    gap: 14px;
+    width: 90%;
+    
+    button {
+        background-color: transparent;
+        border: 0;
+        transition: all 2s;
+        color: var(--green-900);
+
+
+        &:hover{
+            transform: scale(1.2) 
+        }
+
+    }
+
+}
+
+.buttonPressed {
+    transition: all 1s;
+    transform: rotate(180deg);
+    color: var(--red-900);
+}
+
+.buttonNotPressed {
+    transition: all 2s;
+    transform: rotate(-180deg);
+    color: var(--green-900);
+}
+
+.categoryItem {
+    display: flex;
+    background-color: var(--dark-900);
+    align-items: center;
+    border: 0;
+    font-size: 18px;
+    border-radius: 8px;
+    color: var(--white);
+    transition: all 0.5s;
+    width: 90%;
+    padding: 10px;
+    margin: 16px 0;
+
+    &:hover {
+        filter: brightness(1.2);
+        transform: scale(1.05);
+    }
+}
+
+.createCategory {
+    height: 40px;
+    width: 90%;
+    border-radius: 8px;
+    border: 0px;
+    font-weight: bold;
+    font-size: 16px;
+    background-color: var(--green-900);
+    color: var(--dark-900);
+    transition: all 0.5s;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    
+    a{
+        text-decoration: none;
+    }
+
+ 
+    &:hover {
+        transform: scale(1.05);
+        background-color: var(--green-900);
+        color: var(--dark-700);
+    }
+}
+

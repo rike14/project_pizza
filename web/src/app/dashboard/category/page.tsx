@@ -1,39 +1,26 @@
+"use client"
 import Loading from '@/app/components/loading/loading'
 import { Button } from '@/app/dashboard/components/button'
-import { getCookieServer } from '@/lib/cookieServer'
-import { api } from '@/services/app'
-import { redirect } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 import { Suspense } from 'react'
+import { toast } from 'sonner'
+import CreateCategory from './components/form'
 import styles from './styles.module.scss'
 
 export default function Category(){
+    const router = useRouter()
 
     async function handleRegisterCategory(formData: FormData) {
-        "use server"
 
-        const name = formData.get("name")
+        const response = await CreateCategory(formData)
 
-        if(name === ""){
+        if(!response){
+            toast.warning("Category already exists")
             return;
         }
-
-        const data = {
-            name: name
-        }
-
-        const token = getCookieServer()
-
-        await api.post("category", data, {
-            headers: {
-                Authorization: `Bearer ${token}`
-            }
-            })
-            .catch((error) => {
-                console.log(error)
-                return;
-            })  
         
-        redirect("/dashboard")
+        toast.success("Category created successfully!")
+        router.replace("/dashboard/category/list")
     }
 
     return(

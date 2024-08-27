@@ -1,15 +1,13 @@
 "use client"
 import Loading from '@/app/components/loading/loading'
-import { Button } from '@/app/dashboard/components/button'
-import { getCookieServer } from '@/lib/cookieServer'
-import { api } from '@/services/app'
-import { redirect, useRouter } from 'next/navigation'
-import { Suspense, useEffect, useState } from 'react'
-import styles from './styles.module.scss'
 import { getCookieClient } from '@/lib/cookieClient'
-import Link from 'next/link'
-import { toast } from 'sonner'
+import { api } from '@/services/app'
 import { RefreshCcw, X } from 'lucide-react'
+import Link from 'next/link'
+import { useRouter } from 'next/navigation'
+import { Suspense, useEffect, useState } from 'react'
+import { toast } from 'sonner'
+import styles from './styles.module.scss'
 
 interface Category {
     id: string
@@ -21,20 +19,52 @@ export default function CategoriesList(){
     const router = useRouter()
     const [categories, setCategories] = useState<Category[]>([])
     const [buttonPressed, setButtonPressed] = useState(false)
+    const [loading, setLoading] = useState(false)
     
-    useEffect(() => handleRefreshCategories(), [])
+    useEffect(() => initCategories(), [])
+
+    function initCategories() {
+        getCategories()
+    }
 
     function handleRefreshCategories() {
-       setButtonPressed(true)
-       getCategories()
+        setButtonPressed(true)
+        getCategories()
+        setLoading(true)
 
         setTimeout(() => {
-           setButtonPressed(false)
+            setButtonPressed(false)
+            setLoading(false)
             router.refresh()
             toast.success("Categories list updated!")
         }, 3000)
        
     };
+
+    async function handleRemoveCategory(category_id: string){
+        const token = getCookieClient()
+        
+        const response = await api.delete('/category', {
+            headers: {
+                Authorization: `Bearer ${token}`
+            },
+            params: {
+                category_id: category_id
+            }
+        })
+        .catch((error) => {
+            console.log(error)
+            toast.warning("Category cannot be deleted if there is any product registered")
+            return
+        })
+
+        if(!response){
+            return
+        }
+
+        toast.success("Category deleted successfully!")
+        getCategories()
+    }
 
 
     async function getCategories() {
@@ -57,32 +87,40 @@ export default function CategoriesList(){
                     <button
                         onClick={handleRefreshCategories}
                     >
-                        <RefreshCcw size={24} className={buttonPressed ? styles.buttonPressed : styles.buttonNotPressed}/>
+                        <RefreshCcw size={24} className={buttonPressed ? styles.buttonPressed : ''}/>
                     </button>
                 </section>
 
-                <section 
-                    className={styles.categoryItem}
-                >
-                    {categories.length > 0 ? 
-                    categories.map(category  => (
-                        <>
-                            <h1>{category.name}</h1>
-                            < X size={24} color='var(--red-900)'/>
-                        </>
-                    )) : 
-                    <span>
-                        No have categories
-                    </span>
+                {loading ? <Loading /> :
+                    <>
+                        <section 
+                            className={styles.categorySection}
+                        >
+                            {categories.length > 0 ? 
+                                categories.map(category  => (
+                                    <section
+                                        className={styles.item}
+                                        key={category.id}
+                                    >
+                                        <h1>{category.name}</h1>
+                                        <button
+                                            onClick={() => handleRemoveCategory(category.id)}
+                                        >
+                                            < X size={24} color='var(--red-900)'/>
+                                        </button>
+                                    </section>
+                                )) : 
+                                <span className={styles.item}>
+                                    No have categories
+                                </span>
+                            }
+                        </section>
+                    
+                        <Link href="/dashboard/category" className={styles.createCategory}>
+                            Create category
+                        </Link>
+                    </>
                 }
-
-                </section>
-                
-                 <section className={styles.createCategory}>
-                    <Link href="/dashboard/category">
-                        Create category
-                    </Link>
-                </section>
             </Suspense>
         </main>
     )

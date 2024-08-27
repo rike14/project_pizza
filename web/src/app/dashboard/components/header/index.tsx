@@ -38,10 +38,13 @@ export function Header(){
                     </Link>
 
                     <nav>
+                        <Link href="/dashboard/user/list">
+                            Users
+                        </Link>
                         <Link href="/dashboard/category/list">
                             Categories
                         </Link>
-                        <Link href="/dashboard/product">
+                        <Link href="/dashboard/product/list">
                             Products
                         </Link>
 

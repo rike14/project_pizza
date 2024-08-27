@@ -1,4 +1,5 @@
 "use client"
+import Loading from '@/app/components/loading/loading';
 import { Button } from '@/app/dashboard/components/button';
 import { getCookieClient } from '@/lib/cookieClient';
 import { api } from '@/services/app';
@@ -22,8 +23,10 @@ export default function Form({categories}: Props) {
   const router = useRouter();
   const [image, setImage] = useState<File>()
   const [previewImage, setPreviewImage] = useState("")
+  const [loading, setLoading] = useState(false)
 
   async function handleCreateProduct(formData: FormData) {
+      setLoading(true)
       const categoryIndex = formData.get("category")
       const name = formData.get("name")
       const price = formData.get("price")
@@ -52,11 +55,12 @@ export default function Form({categories}: Props) {
       .catch((error) => {
         console.log(error)
         toast.error("Failed to register product")
+        setLoading(false)
         return
       })
 
       toast.success("Product registered successfully!")
-      router.push("/dashboard")
+      router.push("/dashboard/product/list")
     
   }
 
@@ -78,78 +82,80 @@ export default function Form({categories}: Props) {
   return (
     <main className={styles.container}>
       <h1 className={styles.form}>New Product</h1>
-      <form 
-        action={handleCreateProduct}
-        className={styles.form}
-      >
-        <label className={styles.labelImage}>
-          <span>
-            <UploadCloud size={30} />
-          </span>
+      {loading ? <Loading />:
+        <form 
+          action={handleCreateProduct}
+          className={styles.form}
+        >
+          <label className={styles.labelImage}>
+            <span>
+              <UploadCloud size={30} />
+            </span>
+            
+            <input 
+              type='file'
+              accept='image/png, image/jpeg'
+              required
+              onChange={handleFile}
+            />
+
+            {previewImage && (
+              <Image 
+                alt='Product preview'
+                src={previewImage}
+                className={styles.preview}
+                fill={true}
+                quality={100}
+                priority={true}
+              />
+            )}
+          </label>
+
+          <select 
+            name='category'
+          >
+            {categories.map((category, index) => (
+              <option
+                key={category.id}
+                value={index}
+              >
+                {category.name}
+              </option>
+            ))
+
+            }
+          </select>
           
           <input 
-            type='file'
-            accept='image/png, image/jpeg'
+            type='text'
+            name='name'
+            placeholder='Write product name...'
             required
-            onChange={handleFile}
+            className={styles.input}
           />
 
-          {previewImage && (
-            <Image 
-              alt='Product preview'
-              src={previewImage}
-              className={styles.preview}
-              fill={true}
-              quality={100}
-              priority={true}
-            />
-          )}
-        </label>
+          <input 
+            type='text'
+            name='price'
+            placeholder='Write product price...'
+            required
+            className={styles.input}
+          />
 
-        <select 
-          name='category'
-        >
-          {categories.map((category, index) => (
-            <option
-              key={category.id}
-              value={index}
-            >
-              {category.name}
-            </option>
-          ))
+          <textarea
+            className={styles.input}
+            placeholder='Write a product description'
+            name='description'
+            required
+          >
+          </textarea>
 
-          }
-        </select>
-        
-        <input 
-          type='text'
-          name='name'
-          placeholder='Write product name...'
-          required
-          className={styles.input}
-        />
+          <Button 
+            name='Create product'
+          />
 
-        <input 
-          type='text'
-          name='price'
-          placeholder='Write product price...'
-          required
-          className={styles.input}
-        />
-
-        <textarea
-          className={styles.input}
-          placeholder='Write a product description'
-          name='description'
-          required
-        >
-        </textarea>
-
-        <Button 
-          name='Create product'
-        />
-
-      </form>
+        </form>
+      }
     </main>
   )
 }

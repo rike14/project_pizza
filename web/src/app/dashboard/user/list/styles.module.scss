@@ -34,29 +34,58 @@
 
 }
 
+.table {
+    table {
+        width: 100%;
+    }
+}
+
+.tableHeader {
+    width: 100%;
+}
+
+.tableColumn {
+    height: 40px;
+    border-radius: 8px 8px 0 0;
+    color: var(--white);
+    background-color: #414154;    
+}
+
+.tableRow {
+    background-color: var(--dark-900);
+    color: var(--white);
+
+    span {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+.buttonRemoveItem {
+    width: 100%;
+}
+
+
 .buttonPressed {
     animation: flip 3s infinite;
     color: var(--red-900);
 }
 
 
-.categorySection {
+.userSection {
     display: flex;
     flex-direction: column;
     gap: 16px;
-    margin-bottom: 24px;   
+    margin-bottom: 24px; 
+    
+    div {
+        border-radius: 8px;
+    }
 }
 
 
 .item {
-    display: flex;
-    padding: 16px;
-    border-radius: 8px;
-    font-size: 16px;
-    justify-content: space-between;
-    background-color: var(--dark-900);
-    color: var(--white);
-
     button {
         border: 0;
         background-color: transparent;
@@ -68,7 +97,14 @@
     }
 }
 
-.createCategory {
+.noUser {
+    color: var(--white);
+    background-color: var(--dark-900);
+    padding: 16px;
+    border-radius: 8px;
+}
+
+.createUser {
     height: 40px;
     width: 100%;
     border-radius: 8px;

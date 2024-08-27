@@ -7,12 +7,17 @@ import { isAuthenticated } from "./middlewares/isAuthenticated";
 import { AuthUserController } from "./controllers/user/AuthUserController";
 import { CreateUserController } from "./controllers/user/CreateUserController";
 import { DetailUserController } from "./controllers/user/DetailUserController";
+import { ListUserController } from "./controllers/user/ListUserController";
+import { RemoveUserController } from "./controllers/user/RemoveUserController";
 
 import { CreateCategoryController } from "./controllers/category/CreateCategoryController";
 import { ListCategoryController } from "./controllers/category/ListCategoryController";
+import { RemoveCategoryController } from "./controllers/category/RemoveCategoryController";
 
 import { CreateProductController } from "./controllers/product/CreateProductController";
 import { ListByCategoryController } from "./controllers/product/ListByCategoryController";
+import { ListProductController } from "./controllers/product/ListProductController";
+import { RemoveProductController } from "./controllers/product/RemoveProductController";
 
 import { AddItemController } from "./controllers/order/AddItemController";
 import { CreateOrderController } from "./controllers/order/CreateOrderController";
@@ -30,16 +35,21 @@ const upload = multer(uploadConfig.upload("./tmp"))
 
 // USER ROUTES
 router.get('/me', isAuthenticated, new DetailUserController().handle)
+router.get('/users', new ListUserController().handle)
 router.post('/users', new CreateUserController().handle)
+router.delete('/users', new RemoveUserController().handle)
 router.post('/session', new AuthUserController().handle)
 
 // CATEGORIES ROUTES
 router.get('/category', isAuthenticated, new ListCategoryController().handle)
 router.post('/category', isAuthenticated, new CreateCategoryController().handle)
+router.delete('/category', isAuthenticated, new RemoveCategoryController().handle)
 
 // PRODUCTS ROUTES
 router.get('/category/product', isAuthenticated, new ListByCategoryController().handle)
+router.get('/product', isAuthenticated, new ListProductController().handle)
 router.post('/product', isAuthenticated, upload.single('file'), new CreateProductController().handle)
+router.delete('/product', isAuthenticated, upload.single('file'), new RemoveProductController().handle)
 
 // ORDER ROUTES
 router.get('/orders', isAuthenticated, new ListOrdersController().handle)

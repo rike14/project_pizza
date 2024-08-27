@@ -1,5 +1,4 @@
 "use client"
-import Loading from '@/app/components/loading/loading'
 import { useFormStatus } from 'react-dom'
 import styles from './styles.module.scss'
 
@@ -12,15 +11,13 @@ export function Button({name}: Button){
     
     return(
         <>
-            {pending ? <Loading /> : 
-                <button
-                type='submit' 
-                className={styles.button}
-                disabled={pending}
-                >
-                    {name}
-                </button>
-            }
+            <button
+            type='submit' 
+            className={styles.button}
+            disabled={pending}
+            >
+                {name}
+            </button>
         </>
     )
 }

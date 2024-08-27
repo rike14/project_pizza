@@ -1,4 +1,5 @@
 "use client"
+import Loading from '@/app/components/loading/loading';
 import { OrderProps } from '@/lib/order.type';
 import { OrderContext } from '@/providers/order';
 import { RefreshCcw } from 'lucide-react';
@@ -7,7 +8,6 @@ import { use, useState } from 'react';
 import { toast } from 'sonner';
 import { ModalOrder } from '../modal';
 import styles from './styles.module.scss';
-import Loading from '@/app/components/loading/loading';
 
 
 interface Props {
@@ -23,7 +23,7 @@ export default function Orders({ orders }: Props){
        setButtonPressed(true)
 
         setTimeout(() => {
-           setButtonPressed(false)
+            setButtonPressed(false)
             router.refresh()
             toast.success("Orders updated!")
         }, 3000)
@@ -42,7 +42,7 @@ export default function Orders({ orders }: Props){
                     <button
                         onClick={handleRefreshOrders}
                     >
-                        <RefreshCcw size={24} className={buttonPressed ? styles.buttonPressed : styles.buttonNotPressed}/>
+                        <RefreshCcw size={24} className={buttonPressed ? styles.buttonPressed : ''}/>
                     </button>
                 </section>
                 {buttonPressed ? 

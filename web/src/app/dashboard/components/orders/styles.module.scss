@@ -35,16 +35,10 @@
 }
 
 .buttonPressed {
-    transition: all 1s;
-    transform: rotate(180deg);
+    animation: flip 3s infinite;
     color: var(--red-900);
 }
 
-.buttonNotPressed {
-    transition: all 2s;
-    transform: rotate(-180deg);
-    color: var(--green-900);
-}
 
 .listOrders {
     display: flex;
@@ -75,4 +69,19 @@
     background-color: var(--green-900);
     border-radius: 6px 0 0 6px;
     margin-right: 16px;
+}
+
+@keyframes flip {
+
+    0% {
+        transform: rotate(0deg);
+        color: var(--red-900);
+    }
+
+    100% {
+        color: var(--green-900);
+        transition: all 0.5s ease;
+        transform: rotate(360deg);
+
+    }
 }

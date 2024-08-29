@@ -1,7 +1,20 @@
-import React from "react";
-import { Text, View, StyleSheet, Image, TextInput, TouchableOpacity } from "react-native";
+import React, { useContext, useState } from "react";
+import { ActivityIndicator, Image, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
+
+import { AuthContext } from "../../contexts/AuthContext";
 
 export default function SignIn(){
+    const { signIn, loading } = useContext(AuthContext)
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+
+    async function handleLogin() {
+        if(email === '' || password === '') return
+
+        await signIn({email, password}) 
+
+    }
+
     return (
         <View style={styles.container}>
             <Image 
@@ -14,16 +27,27 @@ export default function SignIn(){
                     placeholder="Write your email"
                     style={styles.input}
                     placeholderTextColor="#F0F0F0"
+                    value={email}
+                    onChangeText={setEmail}
                 />
                 <TextInput 
                     placeholder="**********"
                     style={styles.input}
                     placeholderTextColor="#F0F0F0"
                     secureTextEntry={true}
+                    value={password}
+                    onChangeText={setPassword}
                 />
 
-                <TouchableOpacity style={styles.button}>
-                    <Text style={styles.buttonText}>Login</Text>
+                <TouchableOpacity 
+                    style={styles.button}
+                    onPress={handleLogin}
+                >
+                    {loading ? 
+                        (<ActivityIndicator size={25} color="#FFF" />)
+                        :   
+                        (<Text style={styles.buttonText}>Login</Text>)
+                    }
                 </TouchableOpacity>
             </View>
         </View>

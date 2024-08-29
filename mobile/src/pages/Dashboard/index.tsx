@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { SafeAreaView, StyleSheet, Text, TextInput, TouchableOpacity } from "react-native";
 import { NativeStackNavigationProp } from "react-native-screens/lib/typescript/native-stack/types";
 import { StackParamsList } from "../../routes/app.routes";
+import { api } from "../../services/api";
 
 export default function Dashboard() {
     const navigation = useNavigation<NativeStackNavigationProp<StackParamsList>>()
@@ -12,7 +13,13 @@ export default function Dashboard() {
     async function openOrder() {
         if(table === "") return
 
-        navigation.navigate('Order', {table: table, order_id: ''})
+        const response = await api.post('/order', {
+            table: Number(table)
+        })
+
+        navigation.navigate('Order', {table: table, order_id: response.data.id})
+
+        setTable('')
     }
 
     return (
@@ -27,12 +34,12 @@ export default function Dashboard() {
                 onChangeText={setTable}
                 keyboardType="numeric"
             />
-
+            
             <TouchableOpacity 
                 style={styles.button}
                 onPress={openOrder}            
             >
-                <Text style={styles.buttonText}>Open table</Text>
+                <Text style={styles.buttonText}>Open order</Text>
             </TouchableOpacity>
         </SafeAreaView>
     )

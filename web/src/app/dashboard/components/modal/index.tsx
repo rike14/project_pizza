@@ -54,7 +54,7 @@ export function ModalOrder(){
                             key={item.id}
                             className={styles.item}
                         >
-                            <span>Qnt: {item.amount} - <b>{item.product.name}</b> - $ {parseFloat(item.product.price)}</span>
+                            <span>Qty: {item.amount} - <b>{item.product.name}</b> - $ {parseFloat(item.product.price)}</span>
                             <span
                                 className={styles.description}
                                 >
@@ -64,6 +64,7 @@ export function ModalOrder(){
                          </section>
                     ))}
 
+                    <hr />
                     <h3
                         className={styles.totalOrder}
                     >

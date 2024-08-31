@@ -59,6 +59,11 @@ To get a local copy up and running follow these simple example steps.
   
 
     ![.env](/public/images/database.png)
+
+* Prisma <br>
+    I use postgres, see the documentation if do you prefer another database connection
+
+    [Documentation Prisma Databases](https://www.prisma.io/docs/orm/overview/databases)
    
 <br>
 

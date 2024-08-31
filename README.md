@@ -264,16 +264,16 @@ To get a local copy up and running follow these simple example steps.
   
   <div>
 
-    ![Loading](/public/gifs/open-order.gif)
+    ![OpenOrder](/public/gifs/open-order.gif)
     
   </div>
 
 
-  - [x] Loading:
+  - [x] Finish order:
   
   <div>
 
-    ![Loading](/public/gifs/finish-order.gif)
+    ![FinishOrder](/public/gifs/finish-order.gif)
     
   </div>
 
@@ -287,7 +287,7 @@ To get a local copy up and running follow these simple example steps.
   
   <div>
 
-    ![Loading](/public/gifs/app.gif)
+    ![App](/public/gifs/app.gif)
     
   </div>
 

@@ -8,6 +8,9 @@ class ListUserService {
                 id: true,
                 name: true,
                 email: true
+            },
+             where: {
+                deleted_at: null
             }
         })
 

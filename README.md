@@ -51,13 +51,14 @@ To get a local copy up and running follow these simple example steps.
 
 * Postgres <br>
     [Download Postgres](https://www.postgresql.org/download/)
+
     [Documentation Postgres](https://www.postgresql.org/docs/)
 
         
     Open Pgadmin (or whatever you prefer) and create a database with the name of your choice, in the image below I created a database with the name "pizzaria", then you create a ".env" file like ".env.example".
   
 
-    ![.env](/public/images/image-1.png)
+    ![.env](/public/images/database.png)
    
 <br>
 
@@ -212,21 +213,78 @@ To get a local copy up and running follow these simple example steps.
 
 - [x] SignIn:
   
-  ![SignIn](/public/images/image-2.png)
+  ![SignIn](/public/images/signin.png)
 
 - [x] Signup:
   
-  ![Signup](/public/images/image.png)
+  ![Signup](/public/images/signup.png)
+
+- [x] Loading:
+  
+  <div>
+
+    ![Loading](/public/gifs/loading.gif)
+    
+  </div>
 
 - [x] Orders page:
   
+  ![Orders](/public/images/orders.png)
+
+- [x] Users list page:
+  
+  ![UserList](/public/images/users.png)
+
+- [x] Create user page:
+  
+  ![CreateUser](/public/images/createuser.png)
+
+- [x] Categories list page:
+  
+  ![CategoriesList](/public/images/categories.png)
+
+- [x] Create category page:
+  
+  ![CreateCategory](/public/images/createcategory.png)
+
+- [x] Products list page:
+  
+  ![ProductsList](/public/images/products.png)
+
+- [x] Create product page:
+  
+  ![CreateProduct](/public/images/createproduct.png)
+
+- [x] Open order:
+  
+  <div>
+
+    ![Loading](/public/gifs/open-order.gif)
+    
+  </div>
+
+
+  - [x] Loading:
+  
+  <div>
+
+    ![Loading](/public/gifs/finish-order.gif)
+    
+  </div>
+
 
 
 <hr>
 
 ## 📱 Project (MOBILE)
 
+- [x] App:
+  
+  <div>
 
+    ![Loading](/public/gifs/app.gif)
+    
+  </div>
 
 ## 🧑🏼‍💻 Author
 

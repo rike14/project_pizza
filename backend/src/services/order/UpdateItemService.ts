@@ -29,8 +29,6 @@ class UpdateItemService{
         }
 
         return orderItem
-
-        return orderItem
     }
 }
 

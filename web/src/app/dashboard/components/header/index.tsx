@@ -12,10 +12,10 @@ import logoImg from '/public/logo.svg'
 
 export function Header(){
     const router = useRouter()
-    const [loading, useLoading] = useState(false)
+    const [loading, setLoading] = useState(false)
 
     async function handleLogout (){
-        useLoading(true)
+        setLoading(true)
 
         deleteCookie("session", { path: "/"})
         toast.success("Logout successfully!")

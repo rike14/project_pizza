@@ -50,13 +50,14 @@ export default function ProductsList(){
     async function handleRemoveProducts(product_id: string){
         const token = getCookieClient()
         
-        const response = await api.delete('/product', {
-            headers: {
-                Authorization: `Bearer ${token}`
-            },
-            params: {
-                product_id: product_id
-            }
+         const data = {
+            product_id: product_id
+        }
+
+        const response = await api.put("/product/update", data, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
         })
         .catch((error) => {
             console.log(error)
@@ -119,7 +120,7 @@ export default function ProductsList(){
 
                                                 <TableCell className={styles.tableRow}> 
                                                     <Image 
-                                                        alt='Product preview'
+                                                        alt={product.name}
                                                         src={api.getUri() + `/files/${product.banner}`}
                                                         className={styles.preview}
                                                         fill={true}

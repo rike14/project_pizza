@@ -113,6 +113,7 @@ export default function Order(){
         }
 
         setItems(oldArray => [...oldArray, data])
+        setAmount('1')
     }
 
     async function handleDeleteItem(item_id: string) {

@@ -19,13 +19,17 @@ class RemoveProductService{
             }
         })
 
+        
         if(findByOrderItem.length > 0){
             throw new Error("Product cannot be deleted if there is any order open with it")
         }
-
-        const product = await prismaClient.product.delete({
+        
+        const product = await prismaClient.product.update({
             where:{
-                id: product_id,
+                id: product_id, 
+            },
+            data:{
+                deleted_at: new Date()
             }
         })
 

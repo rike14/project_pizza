@@ -1,11 +1,13 @@
 import { useNavigation } from "@react-navigation/native";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { SafeAreaView, StyleSheet, Text, TextInput, TouchableOpacity } from "react-native";
 import { NativeStackNavigationProp } from "react-native-screens/lib/typescript/native-stack/types";
+import { AuthContext } from "../../contexts/AuthContext";
 import { StackParamsList } from "../../routes/app.routes";
 import { api } from "../../services/api";
 
 export default function Dashboard() {
+    const { signOut } = useContext(AuthContext)
     const navigation = useNavigation<NativeStackNavigationProp<StackParamsList>>()
 
     const [table, setTable] = useState("")
@@ -20,6 +22,12 @@ export default function Dashboard() {
         navigation.navigate('Order', {table: table, order_id: response.data.id})
 
         setTable('')
+    }
+
+     async function handleLogout() {
+
+        await signOut() 
+
     }
 
     return (
@@ -40,6 +48,14 @@ export default function Dashboard() {
                 onPress={openOrder}            
             >
                 <Text style={styles.buttonText}>Open order</Text>
+            </TouchableOpacity>
+
+
+            <TouchableOpacity 
+                style={styles.buttonSignOut}
+                onPress={handleLogout}            
+            >
+                <Text style={[styles.buttonText, {color: "#FFF"}]}>Logout</Text>
             </TouchableOpacity>
         </SafeAreaView>
     )
@@ -82,5 +98,14 @@ const styles = StyleSheet.create({
         fontSize: 18,
         color: "#101026",
         fontWeight: "bold"
-    }
+    },
+    buttonSignOut: {
+        width: "90%",
+        height: 40,
+        backgroundColor: "#FF3F4b",
+        borderRadius: 4,
+        marginVertical: 12,
+        justifyContent: "center",
+        alignItems: "center"
+    },
 })

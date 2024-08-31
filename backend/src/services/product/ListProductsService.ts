@@ -14,6 +14,9 @@ class ListProductsService {
                         name: true
                     }
                 }
+            },
+            where: {
+                deleted_at: null
             }
 
         })

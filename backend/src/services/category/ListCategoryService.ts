@@ -7,6 +7,9 @@ class ListCategoryService {
             select: {
                 id: true,
                 name: true,
+            },
+            where: {
+                deleted_at: null
             }
         })
 

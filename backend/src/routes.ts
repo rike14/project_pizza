@@ -49,7 +49,7 @@ router.delete('/category', isAuthenticated, new RemoveCategoryController().handl
 router.get('/category/product', isAuthenticated, new ListByCategoryController().handle)
 router.get('/product', isAuthenticated, new ListProductController().handle)
 router.post('/product', isAuthenticated, upload.single('file'), new CreateProductController().handle)
-router.delete('/product', isAuthenticated, upload.single('file'), new RemoveProductController().handle)
+router.put('/product/update', isAuthenticated, new RemoveProductController().handle)
 
 // ORDER ROUTES
 router.get('/orders', isAuthenticated, new ListOrdersController().handle)

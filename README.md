@@ -208,7 +208,7 @@ To get a local copy up and running follow these simple example steps.
     * Press "r" to reload the emulator.
   
 * IOS: 
-    * Press "i" to open the emulator (remember to install and create the emulator via Android Studio).
+    * Press "i" to open the emulator (remember to install Xcode to create emulator).
     * Press "r" to reload the emulator.
 
 

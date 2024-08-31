@@ -55,7 +55,7 @@ To get a local copy up and running follow these simple example steps.
     [Documentation Postgres](https://www.postgresql.org/docs/)
 
         
-    Open Pgadmin (or whatever you prefer) and create a database with the name of your choice, in the image below I created a database with the name "pizzaria", then you create a ".env" file like ".env.example".
+    Open Pgadmin (or whatever do you prefer) and create a database with the name of your choice, in the image below I created a database with the name "pizzaria", then you create a ".env" file like ".env.example".
   
 
     ![.env](/public/images/database.png)

@@ -8,6 +8,10 @@ const nextConfig = {
                 hostname: 'localhost',
                 port: '3333',
             },
+            {
+                protocol: 'https',
+                hostname: 'https://projectpizzabackend-rike14s-projects.vercel.app',
+            },
         ],
     }
 };

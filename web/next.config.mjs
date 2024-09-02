@@ -10,9 +10,13 @@ const nextConfig = {
             },
             {
                 protocol: 'https',
-                hostname: '**',
-            },
+                hostname: process.env.NEXT_PUBLIC_API_URL,
+                port: '',
+            }
         ],
+        env: {
+            key: "NEXT_PUBLIC_API_URL"
+        }
     }
 };
 

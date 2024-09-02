@@ -1,20 +1,22 @@
+"use client"
 import Loading from '@/app/components/loading/loading'
 import { api } from '@/services/app'
-import { cookies } from 'next/headers'
 import Image from 'next/image'
 import Link from 'next/link'
 import { redirect } from 'next/navigation'
-import { Suspense } from 'react'
+import { Suspense, useState } from 'react'
 import styles from './page.module.scss'
 import logoImg from '/public/logo.svg'
 import { Button } from './dashboard/components/button'
+import { createCookies } from '@/lib/createCookies'
+import { toast } from 'sonner'
+import { TriangleAlertIcon } from 'lucide-react'
+import Spinner from './components/spinner'
 
 export default function Home(){
+  const [loading, setLoading] = useState(false)
 
   async function handleSignin(formData: FormData){
-      "use server"
-
-
       const email = formData.get("email")
       const password = formData.get("password")
 
@@ -32,21 +34,25 @@ export default function Home(){
           return;
         }
 
-        const expressTime = 60 * 60 * 24 * 30 * 1000 // 30 days
-        cookies().set("session", response.data.token), {
-          maxAge: expressTime,
-          path: '/',
-          httpOnly: false,
-          secure: process.env.NODE_ENV === "production"
-        }
+        await createCookies(response.data.token)
+        toast.success(`Login successfully! Welcome ${response.data.name}`)
 
       } catch (error) {
-        console.log(error)
+        toast("Email or password wrong! Try again!", {
+          icon: <TriangleAlertIcon />,
+          style: {
+            color: "var(--red-900)"
+          }
+        })
         return;
       }
       
       redirect("/dashboard")
 
+  }
+
+  function handleSignup(){
+    setLoading(true)
   }
 
   return(
@@ -81,9 +87,13 @@ export default function Home(){
                 />
               </form>
 
-              <Link href="/signup" className={styles.text}>
-                Don't have an account? Signup
-              </Link>
+              <div>
+                {loading ? <Spinner /> : 
+                  <Link href="/signup" className={styles.text} onClick={handleSignup}>
+                    Don't have an account? Signup
+                  </Link>
+                }
+              </div>
             </section>
         </div>
       </Suspense>

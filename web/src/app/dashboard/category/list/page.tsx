@@ -2,7 +2,7 @@
 import Loading from '@/app/components/loading/loading'
 import { getCookieClient } from '@/lib/cookieClient'
 import { api } from '@/services/app'
-import { RefreshCcw, X } from 'lucide-react'
+import { RefreshCcw, TriangleAlertIcon, X } from 'lucide-react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { Suspense, useEffect, useState } from 'react'
@@ -54,7 +54,12 @@ export default function CategoriesList(){
         })
         .catch((error) => {
             console.log(error)
-            toast.warning("Category cannot be deleted if there is any product registered")
+            toast("Category cannot be deleted if there is any product registered", {
+                icon: <TriangleAlertIcon />,
+                style: {
+                    color: "var(--red-900)"
+                }
+            })
             return
         })
 

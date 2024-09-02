@@ -2,6 +2,7 @@
 
 import { getCookieClient } from "@/lib/cookieClient"
 import { api } from "@/services/app"
+import { TriangleAlertIcon } from "lucide-react"
 import { useRouter } from "next/navigation"
 import { createContext, ReactNode, useState } from "react"
 import { toast } from "sonner"
@@ -82,7 +83,12 @@ export function OrderProvider({children}: OrderProviderProps){
                 }
             })
         } catch (error) {
-            toast.error("Error to finish the order")
+            toast("Error to finish the order", {
+                icon: <TriangleAlertIcon />,
+                style: {
+                    color: "var(--red-900)"
+                }
+            })
             return
         }
 

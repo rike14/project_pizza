@@ -3,7 +3,7 @@ import Loading from '@/app/components/loading/loading';
 import { Button } from '@/app/dashboard/components/button';
 import { getCookieClient } from '@/lib/cookieClient';
 import { api } from '@/services/app';
-import { UploadCloud } from 'lucide-react';
+import { TriangleAlertIcon, UploadCloud } from 'lucide-react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { ChangeEvent, useState } from 'react';
@@ -33,7 +33,12 @@ export default function Form({categories}: Props) {
       const description = formData.get("description")
 
       if(!categoryIndex || !name || !price || !description || !image){
-        toast.warning("Fill in all fields")
+        toast("Fill in all fields", {
+          icon: <TriangleAlertIcon />,
+          style: {
+            color: "var(--warning)"
+          }
+        })
         return;
       }
 
@@ -54,7 +59,12 @@ export default function Form({categories}: Props) {
       })
       .catch((error) => {
         console.log(error)
-        toast.error("Failed to register product")
+        toast("Failed to register product", {
+          icon: <TriangleAlertIcon />,
+          style: {
+              color: "var(--red-900)"
+          }
+        })
         setLoading(false)
         return
       })
@@ -69,7 +79,12 @@ export default function Form({categories}: Props) {
       const image = e.target.files[0]
 
       if(image.type !== "image/jpeg" && image.type !== "image/png"){
-        toast.warning("File format not allowed")
+        toast("File format not allowed", {
+          icon: <TriangleAlertIcon />,
+          style: {
+            color: "var(--red-900)"
+          }
+        })
         return
       }
 

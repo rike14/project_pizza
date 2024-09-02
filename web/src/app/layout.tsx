@@ -25,7 +25,7 @@ export default function RootLayout({
               backgroundColor: "var(--dark-900)",
               color: "var(--green-900)",
               borderColor: "rgba(255,255,255, 0.5)"
-            }
+            },
           }}
         />
         {children}

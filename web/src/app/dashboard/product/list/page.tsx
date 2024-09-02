@@ -3,7 +3,7 @@ import Loading from '@/app/components/loading/loading'
 import { getCookieClient } from '@/lib/cookieClient'
 import { api } from '@/services/app'
 import { Table, TableBody, TableCell, TableColumn, TableHeader, TableRow } from "@nextui-org/react"
-import { RefreshCcw, X } from 'lucide-react'
+import { RefreshCcw, TriangleAlertIcon, X } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
@@ -61,7 +61,12 @@ export default function ProductsList(){
         })
         .catch((error) => {
             console.log(error)
-            toast.warning("Product cannot be deleted if there is any order open with it")
+            toast("Product cannot be deleted if there is any order open with it", {
+                icon: <TriangleAlertIcon />,
+                style: {
+                    color: "var(--red-900)"
+                }
+            })
             return
         })
 
@@ -69,7 +74,7 @@ export default function ProductsList(){
             return
         }
 
-        toast.warning("Product deleted successfully!")
+        toast.success("Product deleted successfully!")
         getProducts()
     }
 

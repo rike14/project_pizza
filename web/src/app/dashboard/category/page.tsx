@@ -6,6 +6,7 @@ import { Suspense } from 'react'
 import { toast } from 'sonner'
 import CreateCategory from './components/form'
 import styles from './styles.module.scss'
+import { TriangleAlertIcon } from 'lucide-react'
 
 export default function Category(){
     const router = useRouter()
@@ -15,7 +16,12 @@ export default function Category(){
         const response = await CreateCategory(formData)
 
         if(!response){
-            toast.warning("Category already exists")
+            toast("Category already exists", {
+                icon: <TriangleAlertIcon />,
+                style: {
+                    color: "var(--warning)"
+                }
+            })
             return;
         }
         

@@ -1,17 +1,21 @@
+"use client"
 import Loading from "@/app/components/loading/loading";
 import { api } from "@/services/app";
 import Image from "next/image";
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { Suspense } from "react";
+import { Suspense, useState } from "react";
 import styles from '../page.module.scss';
 import logoImg from '/public/logo.svg';
 import { Button } from "../dashboard/components/button";
+import { toast } from "sonner";
+import Spinner from "../components/spinner";
+import { TriangleAlertIcon } from "lucide-react";
 
 export default function Signup(){
+    const [loading, setLoading] = useState(false)
 
     async function handleSignup(formData: FormData){
-        "use server"
         const name = formData.get("name")
         const email = formData.get("email")
         const password = formData.get("password")
@@ -27,12 +31,24 @@ export default function Signup(){
                 password
             })
 
+            toast.success("User created successfully!")
+
         } catch (error) {
-            console.log(error)
+            let errorMessage = error.response.data.error ?? 'Error, something went wrong!';
+            toast(errorMessage, {
+                icon: <TriangleAlertIcon />,
+                style: {
+                    color: "var(--warning)"
+                }
+            })
             return;
         }
 
         redirect("/")
+    }
+
+    function handleSignIn(){
+        setLoading(true)
     }
 
     return(
@@ -76,9 +92,14 @@ export default function Signup(){
                             />
                         </form>
 
-                        <Link href="/" className={styles.text}>
-                            Do you have an account? Signin
-                        </Link>
+                         <div>
+                            {loading ? <Spinner /> : 
+                                <Link href="/" className={styles.text} onClick={handleSignIn}>
+                                    Do you have an account? Signin
+                                </Link>
+                            }
+                        </div>
+                       
                     </section>
                 </div>
             </Suspense>

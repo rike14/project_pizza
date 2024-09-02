@@ -3,7 +3,7 @@ import Loading from '@/app/components/loading/loading'
 import { getCookieClient } from '@/lib/cookieClient'
 import { api } from '@/services/app'
 import { Table, TableBody, TableCell, TableColumn, TableHeader, TableRow } from "@nextui-org/react"
-import { RefreshCcw, X } from 'lucide-react'
+import { RefreshCcw, TriangleAlertIcon, X } from 'lucide-react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { Suspense, useEffect, useState } from 'react'
@@ -56,7 +56,12 @@ export default function UsersList(){
         })
         .catch((error) => {
             console.log(error)
-            toast.warning("User cannot be deleted")
+            toast("User cannot be deleted", {
+                icon: <TriangleAlertIcon />,
+                style: {
+                    color: "var(--warning)"
+                }
+            })
             return
         })
 

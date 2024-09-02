@@ -6,6 +6,7 @@ import { toast } from 'sonner'
 import { Button } from '../components/button'
 import CreateUser from './components/form'
 import styles from './styles.module.scss'
+import { TriangleAlertIcon } from 'lucide-react'
 
 export default function Category(){
     const router = useRouter()
@@ -15,7 +16,12 @@ export default function Category(){
         const response = await CreateUser(formData)
 
         if(!response){
-            toast.warning("User already exists")
+            toast("User already exists", {
+                icon: <TriangleAlertIcon />,
+                style: {
+                    color: "var(--warning)"
+                }
+            })
             return;
         }
         

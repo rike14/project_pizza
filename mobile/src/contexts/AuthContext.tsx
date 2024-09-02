@@ -92,6 +92,12 @@ export function AuthProvider({children}: AuthProviderProps) {
             setLoading(false)
 
         } catch (error) {
+            setUser({
+                id: '',
+                email: email,
+                name: '',
+                token: ''
+            })
             console.log(error)
             setLoading(false)
         }

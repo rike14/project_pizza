@@ -5,8 +5,8 @@ import { AuthContext } from "../../contexts/AuthContext";
 import { Spinner } from "../../components/Spinner";
 
 export default function SignIn(){
-    const { signIn, loading } = useContext(AuthContext)
-    const [email, setEmail] = useState('')
+    const { signIn, loading, user } = useContext(AuthContext)
+    const [email, setEmail] = useState(user?.email ?? '')
     const [password, setPassword] = useState('')
 
     async function handleLogin() {

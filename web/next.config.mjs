@@ -10,7 +10,7 @@ const nextConfig = {
             },
             {
                 protocol: 'https',
-                hostname: process.env.API_URL,
+                hostname: '**',
             },
         ],
     }

@@ -7,6 +7,10 @@ const nextConfig = {
                 protocol: 'http',
                 hostname: 'localhost',
                 port: '3333',
+            },
+            {
+                protocol: 'https',
+                hostname: 'apisujeitopizza.vercel.app',
             }
         ]
     }

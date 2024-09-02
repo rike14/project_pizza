@@ -1,7 +1,8 @@
 import React, { useContext, useState } from "react";
-import { ActivityIndicator, Image, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
+import { Image, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
 
 import { AuthContext } from "../../contexts/AuthContext";
+import { Spinner } from "../../components/Spinner";
 
 export default function SignIn(){
     const { signIn, loading } = useContext(AuthContext)
@@ -38,17 +39,15 @@ export default function SignIn(){
                     value={password}
                     onChangeText={setPassword}
                 />
-
-                <TouchableOpacity 
-                    style={styles.button}
-                    onPress={handleLogin}
-                >
-                    {loading ? 
-                        (<ActivityIndicator size={25} color="#FFF" />)
-                        :   
-                        (<Text style={styles.buttonText}>Login</Text>)
-                    }
-                </TouchableOpacity>
+                
+                {loading ? <Spinner size={35}/> :
+                    <TouchableOpacity 
+                        style={styles.button}
+                        onPress={handleLogin}
+                    >
+                        <Text style={styles.buttonText}>Login</Text>
+                    </TouchableOpacity>
+                }
             </View>
         </View>
     )
@@ -69,7 +68,7 @@ const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "center",
         paddingVertical: 32,
-        paddingHorizontal: 14
+        paddingHorizontal: 14,
     },
     input: {
         height: 40,
@@ -78,7 +77,7 @@ const styles = StyleSheet.create({
         marginBottom: 12,
         borderRadius: 4,
         paddingHorizontal: 8,
-        color: "#FFF"
+        color: "#FFF",
     },
     button: {
         width: "95%",

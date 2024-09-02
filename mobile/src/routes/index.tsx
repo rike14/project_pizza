@@ -1,9 +1,10 @@
 import React, { useContext } from "react";
-import { ActivityIndicator, View } from "react-native";
+import { View } from "react-native";
 
 import { AuthContext } from "../contexts/AuthContext";
 import AppRoutes from "./app.routes";
 import AuthRoutes from "./auth.routes";
+import { Spinner } from "../components/Spinner";
 
 function Routes() {
     const { isAuthenticated, loading } = useContext(AuthContext)
@@ -18,7 +19,7 @@ function Routes() {
                     alignItems: "center"
                 }}>
 
-                <ActivityIndicator size={60} color="#F5f7fb" />
+                <Spinner size={60}/>
 
             </View>
         )

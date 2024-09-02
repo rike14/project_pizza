@@ -1,0 +1,53 @@
+
+$background: var(--dark-900);
+$size: 30px;
+
+.spinnerContainer {
+    position: relative;
+    top: calc(40% - #{$size / 2});
+    left: calc(50% - #{$size / 2});
+    width: $size;
+    height: $size;
+    animation: spinner-loading 0.75s linear infinite;
+
+    span {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+    }
+
+
+    .spinner {
+        animation: spinner 4s linear infinite;
+    }
+
+    .spinnerBackground {
+        $offset: $size * 0.1;
+        top: $offset;
+        left: $offset;
+        width: $size - ($offset * 2);
+        height: $size - ($offset * 2);
+        background: $background;
+    }
+}
+
+@keyframes spinner-loading {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes spinner {
+    0%, 100% {
+        background: linear-gradient(to top, var(--red-900) 0%, $background 100%);
+    }
+
+    50% {
+        background: linear-gradient(to top, var(--green-900) 0%, $background 100%);
+    }
+}

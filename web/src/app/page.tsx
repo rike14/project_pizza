@@ -7,6 +7,7 @@ import { redirect } from 'next/navigation'
 import { Suspense } from 'react'
 import styles from './page.module.scss'
 import logoImg from '/public/logo.svg'
+import { Button } from './dashboard/components/button'
 
 export default function Home(){
 
@@ -75,9 +76,9 @@ export default function Home(){
                   className={styles.input}
                 />
 
-                <button type='submit'>
-                  Login
-                </button>
+                <Button
+                  name='Login'
+                />
               </form>
 
               <Link href="/signup" className={styles.text}>

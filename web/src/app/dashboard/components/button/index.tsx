@@ -1,6 +1,7 @@
 "use client"
 import { useFormStatus } from 'react-dom'
 import styles from './styles.module.scss'
+import Spinner from '@/app/components/spinner'
 
 interface Button {
     name: string
@@ -11,13 +12,16 @@ export function Button({name}: Button){
     
     return(
         <>
-            <button
-            type='submit' 
-            className={styles.button}
-            disabled={pending}
-            >
-                {name}
-            </button>
+            
+            {pending ? <Spinner /> :
+                <button
+                    type='submit' 
+                    className={styles.button}
+                    disabled={pending}
+                >
+                    {name}
+                </button>
+            }
         </>
     )
 }

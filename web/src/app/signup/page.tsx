@@ -6,6 +6,7 @@ import { redirect } from "next/navigation";
 import { Suspense } from "react";
 import styles from '../page.module.scss';
 import logoImg from '/public/logo.svg';
+import { Button } from "../dashboard/components/button";
 
 export default function Signup(){
 
@@ -69,10 +70,10 @@ export default function Signup(){
                                 placeholder='***********'
                                 className={styles.input}
                             />
-
-                            <button type='submit'>
-                                Signup
-                            </button>
+                            
+                            <Button
+                                name='Signup'
+                            />
                         </form>
 
                         <Link href="/" className={styles.text}>

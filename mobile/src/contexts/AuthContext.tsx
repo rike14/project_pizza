@@ -56,8 +56,9 @@ export function AuthProvider({children}: AuthProviderProps) {
                     token: hasUser.token,
                 })
 
-                setLoading(false)
             }
+
+            setLoading(false)
         }
 
         getUser()

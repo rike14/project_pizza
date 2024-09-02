@@ -94,6 +94,7 @@ To get a local copy up and running follow these simple example steps.
 ## ⚙️ Backend
 
 2. Run backend
+   
    ```sh
    ## At the root of the project
     cd backend/
@@ -132,6 +133,11 @@ To get a local copy up and running follow these simple example steps.
 ## 🌐 Web
 
 3. Run web
+   
+   *Do you need create a ".env" file like ".env.example" like image below.*
+
+   ![env.example](/public/images/env-example-web.png)
+
     ```sh
     ## At the root of the project
     cd web/
@@ -176,6 +182,12 @@ To get a local copy up and running follow these simple example steps.
     
 
 1. Run mobile
+
+    *Do you need create a ".env" file like ".env.example" like image below.*
+
+   ![env.example](/public/images/env-example-mobile.png)
+
+
     ```sh
     ## At the root of the project
     cd mobile/

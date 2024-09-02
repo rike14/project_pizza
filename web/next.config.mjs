@@ -10,7 +10,7 @@ const nextConfig = {
             },
             {
                 protocol: 'https',
-                hostname: 'apisujeitopizza.vercel.app',
+                hostname: 'https://apisujeitopizza.vercel.app',
             }
         ]
     }

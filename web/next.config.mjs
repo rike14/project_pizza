@@ -10,7 +10,7 @@ const nextConfig = {
             },
             {
                 protocol: 'https',
-                hostname: 'https://projectpizzabackend-rike14s-projects.vercel.app',
+                hostname: process.env.API_URL,
             },
         ],
     }

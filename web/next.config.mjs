@@ -10,7 +10,8 @@ const nextConfig = {
             },
             {
                 protocol: 'https',
-                hostname: 'https://apisujeitopizza.vercel.app',
+                hostname: process.env.NEXT_PUBLIC_API_URL,
+                port: ''
             }
         ]
     }

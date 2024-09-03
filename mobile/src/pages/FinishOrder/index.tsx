@@ -2,6 +2,7 @@ import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import Toast from 'react-native-toast-message';
 import { StackParamsList } from '../../routes/app.routes';
 import { api } from '../../services/api';
 
@@ -24,9 +25,31 @@ export default function FinishOrder() {
                 order_id: route.params?.order_id
             })
 
+            Toast.show({
+                type: 'success',
+                text1: 'Order finished!',
+                text2: 'The order is being prepared ✅',
+                text1Style: {
+                    fontSize: 18
+                },
+                text2Style: {
+                    fontSize: 16
+                }
+            });
             navigation.popToTop()
         } catch (error) {
             console.log(error)
+            Toast.show({
+                type: 'error',
+                text1: 'Error',
+                text2: 'Error to finish order, try again! ❌',
+                text1Style: {
+                    fontSize: 18
+                },
+                text2Style: {
+                    fontSize: 16
+                }
+            });
         }
     }
 

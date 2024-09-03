@@ -1,23 +1,36 @@
-import { Dimensions, ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import { CategoryProps } from "../../pages/Order";
+import { Dimensions, Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { api } from "../../services/api";
+
+type ItemProps = {
+    id: string
+    name: string
+    banner?: string
+}
+
 
 type ModalPickerProps = {
-    options: CategoryProps[]
+    options: ItemProps[]
     handleCloseModal: () => void
-    selectedItem: (item: CategoryProps) => void
+    selectedItem: (item: ItemProps) => void
 }
 
 const {width: WIDTH, height: HEIGHT} = Dimensions.get("window")
 
 export function ModalPicker({options, handleCloseModal, selectedItem}: ModalPickerProps) {
 
-    function onPressItem(item: CategoryProps) {
+    function onPressItem(item: ItemProps) {
         selectedItem(item)
         handleCloseModal()
     }
 
     const option = options.map((item, index) => (
         <TouchableOpacity key={index} style={styles.option} onPress={() => onPressItem(item)}>
+            {item?.banner ? 
+                <>
+                    <Image src={api.getUri() + `/files/${item?.banner}`} style={styles.banner}/>
+                </>
+                : ''
+            }
             <Text style={styles.item}>{item?.name}</Text>
         </TouchableOpacity>
     ))
@@ -50,7 +63,8 @@ const styles = StyleSheet.create({
         borderRadius: 4
     },
     option: {
-        alignItems: "flex-start",
+        flexDirection: "row",
+        alignItems: "center",
         borderTopWidth: 0.8,
         borderTopColor: "#8a8a8a"
     },
@@ -59,5 +73,14 @@ const styles = StyleSheet.create({
         fontSize: 14,
         fontWeight: "bold",
         color: "#101026"
+    },
+    banner: {
+        width: 100,
+        height: 100,
+        objectFit: "fill",
+        borderRadius: 4,
+        margin: 16,
+        alignItems: "center",
+        justifyContent: "center"
     }
 })

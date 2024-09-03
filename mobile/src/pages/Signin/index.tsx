@@ -1,8 +1,8 @@
 import React, { useContext, useState } from "react";
 import { Image, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
 
-import { AuthContext } from "../../contexts/AuthContext";
 import { Spinner } from "../../components/Spinner";
+import { AuthContext } from "../../contexts/AuthContext";
 
 export default function SignIn(){
     const { signIn, loading, user } = useContext(AuthContext)

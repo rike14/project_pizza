@@ -1,5 +1,6 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { createContext, ReactNode, useEffect, useState } from "react";
+import Toast from "react-native-toast-message";
 import { api } from "../services/api";
 
 type AuthContextData = {
@@ -91,6 +92,18 @@ export function AuthProvider({children}: AuthProviderProps) {
 
             setLoading(false)
 
+            Toast.show({
+                type: 'success',
+                text1: `Login successfully!`,
+                text2: `Welcome ${name}`,
+                text1Style: {
+                    fontSize: 18
+                },
+                text2Style: {
+                    fontSize: 16
+                }
+            });
+
         } catch (error) {
             setUser({
                 id: '',
@@ -100,6 +113,17 @@ export function AuthProvider({children}: AuthProviderProps) {
             })
             console.log(error)
             setLoading(false)
+            Toast.show({
+                type: 'error',
+                text1: 'Error',
+                text2: 'Email or password is wrong! ❌',
+                text1Style: {
+                    fontSize: 18
+                },
+                text2Style: {
+                    fontSize: 16
+                }
+            });
         }
         
     }
@@ -114,6 +138,17 @@ export function AuthProvider({children}: AuthProviderProps) {
                 token: ''
             })
         })
+        Toast.show({
+            type: 'success',
+            text1: 'Bye bye!',
+            text2: 'Logout successfully 🔚',
+            text1Style: {
+                fontSize: 18
+            },
+            text2Style: {
+                fontSize: 16
+            }
+        });
     }
 
     return (

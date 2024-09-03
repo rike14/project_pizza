@@ -3,6 +3,7 @@ import { RouteProp, useNavigation, useRoute } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import React, { useEffect, useState } from "react";
 import { FlatList, Modal, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
+import Toast from "react-native-toast-message";
 import { ListItem } from "../../components/ListItem";
 import { ModalPicker } from "../../components/ModalPicker";
 import { StackParamsList } from "../../routes/app.routes";
@@ -17,7 +18,7 @@ type RouteDetailParams = {
 
 type OrderRouteProps = RouteProp<RouteDetailParams, 'Order'>
 
-export type CategoryProps = {
+type CategoryProps = {
     id: string
     name: string
 }
@@ -25,6 +26,7 @@ export type CategoryProps = {
 type ProductProps = {
     id: string
     name: string
+    banner?: string
 }
 
 type ItemProps = {
@@ -84,9 +86,31 @@ export default function Order(){
             })
 
             navigation.goBack()
+            Toast.show({
+                type: 'success',
+                text1: 'Table closed!',
+                text2: 'The table was closed ✅',
+                text1Style: {
+                    fontSize: 18
+                },
+                text2Style: {
+                    fontSize: 16
+                }
+            });
 
         } catch (error) {
             console.log(error)
+            Toast.show({
+                type: 'error',
+                text1: 'Error',
+                text2: 'Error to delete order! ❌',
+                text1Style: {
+                    fontSize: 18
+                },
+                text2Style: {
+                    fontSize: 16
+                }
+            });
         }
     }
 
@@ -114,6 +138,18 @@ export default function Order(){
 
         setItems(oldArray => [...oldArray, data])
         setAmount('1')
+        Toast.show({
+            type: 'success',
+            text1: productSelected?.name,
+            text2: 'Product added to order 📜',
+            text1Style: {
+                fontSize: 18
+            },
+            text2Style: {
+                fontSize: 16
+            }
+        });
+
     }
 
     async function handleDeleteItem(item_id: string) {
@@ -128,6 +164,17 @@ export default function Order(){
         })
         
         setItems(removeItem)
+        Toast.show({
+            type: 'success',
+            text1: productSelected?.name,
+            text2: 'Product removed from order 📜',
+            text1Style: {
+                fontSize: 18
+            },
+            text2Style: {
+                fontSize: 16
+            }
+        });
     }
 
     function handleFinishOrder() {

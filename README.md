@@ -12,6 +12,7 @@
   </p>
 </div>
 
+<hr>
 
 ## 📃 About The Project
 
@@ -22,6 +23,8 @@
 - Finish order (web).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<hr>
 
 ## 💎 Built With
 
@@ -41,11 +44,15 @@
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+<hr>
+
 ## ⏱️ Getting Started
 
 This is an example of how you can run your project locally.
 
 To get a local copy up and running follow these simple example steps.
+
+<hr>
 
 ## 🛠️ Prerequisites
 
@@ -82,6 +89,8 @@ To get a local copy up and running follow these simple example steps.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+<hr>
+
 ## 🪄 Installation
 
 1. Clone the repo
@@ -90,6 +99,8 @@ To get a local copy up and running follow these simple example steps.
    ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<hr>
 
 ## ⚙️ Backend
 
@@ -130,6 +141,8 @@ To get a local copy up and running follow these simple example steps.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+<hr>
+
 ## 🌐 Web
 
 3. Run web
@@ -168,6 +181,8 @@ To get a local copy up and running follow these simple example steps.
       ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<hr>
 
 ## 📱 Mobile (Android/IOS)
 
@@ -226,25 +241,17 @@ To get a local copy up and running follow these simple example steps.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+<hr>
+
 ## 🚀 Project (WEB)
 
 - [x] Web:
-  
-  <div>
-    <video width="100%" height="500" autoplay muted controls loop>
-      <source src="./public/videos/web.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-  </div>
+
+  https://github.com/user-attachments/assets/10c97857-9f3d-4e94-b119-381ba6c591df
 
 - [x] Loading:
   
-  <div>
-    <video width="100%" height="500" autoplay muted controls loop>
-      <source src="./public/videos/loading.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-  </div>
+  https://github.com/user-attachments/assets/31e350f7-bdb4-4b60-828c-b84924d1cb6f
 
 - [x] Create user page:
   
@@ -268,12 +275,9 @@ To get a local copy up and running follow these simple example steps.
 
 - [x] App:
   
-  <div>
-    <video width="100%" height="500" autoplay muted controls loop>
-      <source src="./public/videos/mobile.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-  </div>
+  https://github.com/user-attachments/assets/e9075c76-ae1e-4c0c-ad7d-cda536ff0ea8
+
+<hr>
 
 ## 🧑🏼‍💻 Author
 

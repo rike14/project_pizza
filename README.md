@@ -228,66 +228,37 @@ To get a local copy up and running follow these simple example steps.
 
 ## 🚀 Project (WEB)
 
-- [x] SignIn:
+- [x] Web:
   
-  ![SignIn](/public/images/signin.png)
-
-- [x] Signup:
-  
-  ![Signup](/public/images/signup.png)
+  <div>
+    <video width="100%" height="500" autoplay muted controls loop>
+      <source src="./public/videos/web.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
 
 - [x] Loading:
   
   <div>
-
-    ![Loading](/public/gifs/loading.gif)
-    
+    <video width="100%" height="500" autoplay muted controls loop>
+      <source src="./public/videos/loading.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
   </div>
-
-- [x] Orders page:
-  
-  ![Orders](/public/images/orders.png)
-
-- [x] Users list page:
-  
-  ![UserList](/public/images/users.png)
 
 - [x] Create user page:
   
   ![CreateUser](/public/images/createuser.png)
 
-- [x] Categories list page:
-  
-  ![CategoriesList](/public/images/categories.png)
-
 - [x] Create category page:
   
   ![CreateCategory](/public/images/createcategory.png)
 
-- [x] Products list page:
-  
-  ![ProductsList](/public/images/products.png)
 
 - [x] Create product page:
   
   ![CreateProduct](/public/images/createproduct.png)
 
-- [x] Open order:
-  
-  <div>
-
-    ![OpenOrder](/public/gifs/open-order.gif)
-    
-  </div>
-
-
-  - [x] Finish order:
-  
-  <div>
-
-    ![FinishOrder](/public/gifs/finish-order.gif)
-    
-  </div>
 
 
 
@@ -298,9 +269,10 @@ To get a local copy up and running follow these simple example steps.
 - [x] App:
   
   <div>
-
-    ![App](/public/gifs/app.gif)
-    
+    <video width="100%" height="500" autoplay muted controls loop>
+      <source src="./public/videos/mobile.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
   </div>
 
 ## 🧑🏼‍💻 Author

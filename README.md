@@ -1,4 +1,4 @@
-# [Sujeito Pizza](https://sujeitopizza.vercel.app)  - 🚧 Currently in construction, please wait...
+# [Sujeito Pizza](https://sujeitopizza.vercel.app)
 <a id="readme-top"></a>
 
 <br />
